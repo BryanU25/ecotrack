@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#banner-image {
+  mask-image: linear-gradient(black 80%, transparent)
+}
+
