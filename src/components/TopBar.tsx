@@ -91,6 +91,7 @@ const TopBar: FC<TopBarProps> = ({
             <Button
               id="Sesion"
               type="secondary"
+              color="blue"
               onClick={() => router.push("/auth")}
             >
               Iniciar sesión
