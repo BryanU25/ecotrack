@@ -1,58 +1,27 @@
-import { openModal } from '@/redux/features/modalSlice'
-import { FC } from 'react'
-import { useDispatch } from 'react-redux'
-import { Menu, Pagination, Table } from 'ui'
-import { MODAL_TYPES } from '../Modal/ModalTypes'
-import useUsers from '@/hooks/useUsers'
+import { FC } from "react";
+import Pagination from "@/components/Pagination";
+import Table from "@/components/Table";
+import Menu from "@/components/Menu/Menu";
+
+import { toast } from "sonner";
 
 interface User {
-  name: string
-  email: string
-  cedula: string
-  phoneNumber: string
-  role: string
-  key: string | number | null | undefined
+  name: string;
+  email: string;
+  cedula: string;
+  phoneNumber: string;
+  role: string;
+  key: string | number | null | undefined;
 }
 
 const UsersListTable: FC<{
-  users: User[]
-  totalPages: number
-  currentPage: number
-  loading?: boolean
+  users: User[];
+  totalPages: number;
+  currentPage: number;
+  loading?: boolean;
   // eslint-disable-next-line no-unused-vars
-  onPageChange: (page: number) => void
+  onPageChange: (page: number) => void;
 }> = ({ users, totalPages, onPageChange, currentPage, loading }) => {
-  const { deleteUser } = useUsers()
-
-  const dispatch = useDispatch()
-  const openCreateUserModal = (userId: number) => {
-    dispatch(
-      openModal({
-        type: MODAL_TYPES.CREATE_USER_MODAL,
-        data: {
-          userId
-        }
-      })
-    )
-  }
-
-  const openDeleteUserModal = (userId: number) => {
-    dispatch(
-      openModal({
-        type: MODAL_TYPES.CONFIRM_MODAL,
-        data: {
-          type: 'warning',
-          message: '¿Estás seguro que deseas eliminar este usuario?',
-          description:
-            'Una vez eliminado se eliminará toda la información relacionada a este usuario. Esta acción no se puede deshacer.',
-          onOk: () => {
-            deleteUser(userId)
-          }
-        }
-      })
-    )
-  }
-
   return (
     <div className="w-full overflow-auto">
       <Table
@@ -60,46 +29,46 @@ const UsersListTable: FC<{
         data={users}
         headers={[
           {
-            dataIndex: 'name',
-            key: 'name',
-            title: 'Nombre Estudiante'
+            dataIndex: "name",
+            key: "name",
+            title: "Nombre Estudiante",
           },
           {
-            dataIndex: 'email',
-            key: 'email',
-            title: 'Correo Electrónico'
+            dataIndex: "email",
+            key: "email",
+            title: "Correo Electrónico",
           },
           {
-            dataIndex: 'cedula',
-            key: 'cedula',
-            title: 'Cedula'
+            dataIndex: "cedula",
+            key: "cedula",
+            title: "Cedula",
           },
           {
-            dataIndex: 'phoneNumber',
-            key: 'phoneNumber',
-            title: 'Celular'
+            dataIndex: "phoneNumber",
+            key: "phoneNumber",
+            title: "Celular",
           },
           {
-            dataIndex: 'role',
-            key: 'role',
-            title: 'Rol'
+            dataIndex: "role",
+            key: "role",
+            title: "Rol",
           },
           {
-            dataIndex: 'key',
-            key: 'key',
+            dataIndex: "key",
+            key: "key",
             render: (key) => (
               <Menu
                 id={key}
                 onEdit={() => {
-                  openCreateUserModal(key)
+                  toast("Inserta la funcionalidad para editar");
                 }}
                 onDelete={() => {
-                  openDeleteUserModal(key)
+                  toast("Inserta la funcionalidad para eliminar");
                 }}
               />
             ),
-            title: 'Acciones'
-          }
+            title: "Acciones",
+          },
         ]}
       />
 
@@ -110,7 +79,7 @@ const UsersListTable: FC<{
         position="right"
       />
     </div>
-  )
-}
+  );
+};
 
-export default UsersListTable
+export default UsersListTable;
