@@ -25,10 +25,10 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full flex items-center justify-center gap-20 max-w-[1114px] m-auto mt-[90px]">
+    <div className="w-full md:flex items-center justify-center gap-20 max-w-[1114px] m-auto mt-[90px md:p-0 p-8">
       {/* rigth side */}
 
-      <div className="w-1/2">
+      <div className="md:w-1/2 w-full">
         <div className="flex justify-center items-center">
           <Image src="/logotipo.png" alt="Logo" width={250} height={50} />
         </div>
@@ -85,7 +85,7 @@ export default function Login() {
       </div>
 
       {/* left side */}
-      <div className="w-1/2 rounded-[30px]">
+      <div className="md:w-1/2 rounded-[30px] md:block hidden">
         <Image
           src="/earth-3d-bg.png"
           alt="icon"

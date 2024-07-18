@@ -60,7 +60,7 @@ const TopBar: FC<TopBarProps> = ({
       </div>
       <div className="flex items-center gap-8">
         <div className="relative flex items-center gap-10">
-          <ul className="flex items-center justify-center gap-4">
+          <ul className="md:flex items-center justify-center gap-4 hidden">
             <li>
               <Link href={"/"}>Inicio</Link>
             </li>

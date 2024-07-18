@@ -2,8 +2,8 @@ import React from "react";
 
 export default function page() {
   return (
-    <main className="flex min-h-screen max-w-[1114px] m-auto flex-col items-center gap-5 p-24">
-      <h1 className="font-semibold text-2xl">
+    <main className="flex min-h-screen max-w-[1114px] m-auto flex-col items-center gap-5 md:p-24 p-8">
+      <h1 className="font-semibold md:text-2xl text-xl">
         Ecomunidad: Pioneros en Ingeniería Ambiental
       </h1>
 

@@ -1,7 +1,9 @@
 export default function Home() {
   return (
-    <main className="flex min-h-screen max-w-[1114px] m-auto flex-col items-center gap-5 p-24">
-      <h1 className="font-semibold text-2xl">Bienvenidos a Ecomunidad 🤖</h1>
+    <main className="flex min-h-screen max-w-[1114px] m-auto flex-col items-center gap-5 md:p-24 p-8">
+      <h1 className="font-semibold md:text-2xl text-xl">
+        Bienvenidos a Ecomunidad 🤖
+      </h1>
 
       <p className="text-sm font-normal text-gray-500 text-justify">
         La huella de carbono es una medida crucial en la lucha contra el cambio
