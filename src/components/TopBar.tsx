@@ -1,3 +1,5 @@
+// Este componente debe refactorizarse, para no utilizar ninguna logica dentro del componente
+
 import { FC, useState } from "react";
 import { useRouter } from "next/navigation";
 import Avatar from "./Avatar";
@@ -11,7 +13,6 @@ type TopBarProps = {
   size?: "md" | "lg" | "full";
   onLogout?: () => void;
   user?: any;
-  hamburgerEvent?: () => void;
   hidden?: boolean;
 };
 
@@ -26,13 +27,15 @@ const TopBar: FC<TopBarProps> = ({
   size = "full",
   user,
   onLogout = () => {},
-  hamburgerEvent = () => {},
   hidden,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
 
-  // eslint-disable-next-line no-undef
+  const hamburgerEvent = () => {
+    setIsMobile(!isMobile);
+  };
 
   return (
     <div
@@ -58,19 +61,44 @@ const TopBar: FC<TopBarProps> = ({
           <GiHamburgerMenu size={25} />
         </button>
       </div>
+
       <div className="flex items-center gap-8">
         <div className="relative flex items-center gap-10">
-          <ul className="md:flex items-center justify-center gap-4 hidden">
-            <li>
+          <ul className={`md:flex items-center justify-center gap-4 hidden`}>
+            <li className="text-black">
               <Link href={"/"}>Inicio</Link>
             </li>
-            <li>
+            <li className="text-black">
               <Link href={"/aboutus"}>Nosotros</Link>
             </li>
-            <li>
+            <li className="text-black">
               <Link href={"/contact"}>Contacto</Link>
             </li>
           </ul>
+
+          {isMobile && (
+            <div className="absolute top-[65px] bg-gray-200 left-[-228px] w-[375px] z-30 overflow-hidden h-screen items-center align-middle justify-center p-20">
+              <ul
+                className={`md:hidden items-center justify-center gap-4 flex flex-col w-full h-full`}
+              >
+                <li className="text-gray-800 font-medium text-lg hover:text-blue-800">
+                  <Link href={"/"} onClick={() => setIsMobile(false)}>
+                    Inicio
+                  </Link>
+                </li>
+                <li className="text-gray-800 font-medium text-lg hover:text-blue-800">
+                  <Link href={"/aboutus"} onClick={() => setIsMobile(false)}>
+                    Nosotros
+                  </Link>
+                </li>
+                <li className="text-gray-800 font-medium text-lg hover:text-blue-800">
+                  <Link href={"/contact"} onClick={() => setIsMobile(false)}>
+                    Contacto
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
 
           {user ? (
             <button
