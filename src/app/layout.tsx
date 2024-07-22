@@ -18,13 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Ecomunidad | Bonos de carbono</title>
+        <title>Ecomunidad | Cambio Climatico Empresarial</title>
         <meta
           name="description"
-          content="Ecomunidad | registro de bonos de carbono."
+          content="Ecomunidad | Cambio Climatico Empresarial"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/Layouticon.svg" />
+        <link rel="icon" href="/logo_gris.svg" />
       </head>
       <body className={inter.className}>
         <ReduxProvider>
